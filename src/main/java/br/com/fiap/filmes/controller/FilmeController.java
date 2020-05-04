@@ -45,7 +45,7 @@ public class FilmeController {
 	}
 	
 	@GetMapping("/form")
-	public String form(@RequestParam(required = false) String page,
+	public String form(@RequestParam String page,
 			@RequestParam(required = false) Long id,
 			@ModelAttribute("filmeModel") FilmeModel filmeModel,
 			Model model) {
@@ -60,7 +60,7 @@ public class FilmeController {
 	@PostMapping
 	public String store(@Valid FilmeModel filme, BindingResult bindingResult, 
 			RedirectAttributes redirectAttributes) {
-		
+				
 		if(bindingResult.hasErrors()) {
 			return "filme-add";
 		}
@@ -79,9 +79,9 @@ public class FilmeController {
 		return "filme-edit";
 	}
 	
-	@PutMapping
+	@PutMapping()
 	public String update(@Valid FilmeModel filme, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-		
+		System.out.println("caiu aq pra q ta add");
 		if(bindingResult.hasErrors()) {
 			return "filme-edit";
 		}
